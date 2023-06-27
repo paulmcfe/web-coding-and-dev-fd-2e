@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>The descendant combinator</title>
+        <style>
+            body {
+                font-size: 1.25rem;
+                margin: 1rem;
+            }
+            aside {
+                border: 1px solid black;
+                padding: 0.75rem;
+            }
+            aside a {
+                color: red;
+                font-style: italic;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <p>
+            Here inside a paragraph, <a href="example12.html">link text</a> uses the default browser styles.
+        </p>
+        <aside>
+            However, inside this <code>aside</code> element, <a href="example12.html">link text</a> uses the styles defined in the <code>aside a</code> selector.
+            <p>
+                Even if you plop the link inside a <code>p</code> element that's a child of the <code>aside</code> element, the <a href="example12.html">link text</a> still uses the styles defined in the <code>aside a</code> selector because it's still a descendant.
+            </p>
+        </aside>
+    </body>
+</html>
