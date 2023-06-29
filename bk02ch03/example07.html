@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Floating Elements (part one)</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                width: 35rem;
+                margin: 1rem;
+            }
+            header {
+                margin-bottom: 1rem;
+            }
+            header img {
+                width: 100px;
+                height: auto;
+            }
+            .subtitle {
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+            nav {
+                margin-top: .5rem;
+                padding: .75rem;
+                border: 1px solid black;
+            }
+            nav a {
+                display: inline-block;
+                padding: 0 1.75rem;
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <img src="images/notw.png" alt="News of the Word logo">
+            <h1>News of the Word</h1>
+            <p class="subtitle">Language news you won’t find anywhere else (for good reason!)</p>
+        </header>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">What’s New</a>
+            <a href="#">What’s Old</a>
+            <a href="#">What’s What</a>
+        </nav>
+    </body>
+</html>
