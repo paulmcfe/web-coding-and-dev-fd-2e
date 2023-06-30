@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Laying out a navigation bar with flexbox</title>
+        <style>
+            * {
+                margin: 0;
+                box-sizing: border-box;
+            }
+            body {
+                margin: 2rem;
+                width: 30rem;
+            }
+            nav {
+                background-color: #ccc;
+            }
+            nav ul {
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                padding: .5rem 0;
+                list-style-type: none;
+            }
+            main {
+                margin-top: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Blog</a></li>
+                <li><a href="#">Store</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <main>
+            Main content goes here...
+        </main>
+    </body>
+</html>
