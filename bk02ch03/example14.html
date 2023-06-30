@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using relative positioning</title>
+        <style>
+            * {
+                margin: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-size: 1.25rem;
+                margin: 32px;
+                width: 600px;
+            }
+            h1,
+            div {
+                margin-bottom: 16px;
+            }
+            img {
+                width: 300px;
+                height: auto;
+            }
+            .offset-image {
+                position: relative;
+                left: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>
+            keyhole path
+        </h1>
+        <div>
+            <i>n.</i> A straight footpath with overhanging trees that create a tunnel effect.
+        </div>
+        <img src="images/keyholepath1.jpg" alt="Photo of a keyhole path">
+        <img src="images/keyholepath2.jpg" alt="Photo of a keyhole path" class="offset-image">
+        <img src="images/keyholepath3.jpg" alt="Photo of a keyhole path">
+    </body>
+</html>
