@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Specifying an element by class</title>
+        <style>
+            .keyword {
+                color: darkorchid;
+            }
+        </style>
+    </head>
+    <body>
+        <header id="page-banner">
+            <h1>Above and Beyond the <span class="keyword">Kale</span> of Duty</h1>
+        </header>
+        <main id="page-content">
+            <p>
+                Do you love to cook with <span class="keyword">kale</span>?
+            </p>
+            <p>
+                What is your favorite <span class="keyword">kale</span>-based sandwich?
+            </p>
+            <p>
+                Having trouble? <span class="keyword">Kale</span> 9-1-1!
+            </p>
+        </main>
+        <script>
+            const keywords = document.getElementsByClassName("keyword")
+            console.log('Friend, the class "keyword" is used ' + keywords.length + ' times in this page.');
+        </script>
+    </body>
+</html>

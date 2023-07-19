@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Specifying elements by selector</title>
+    </head>
+    <body>
+        <header id="page-banner">
+            <h1>Above and Beyond the Kale of Duty</h1>
+            <p>Everything there is to know about kale</p>
+        </header>
+        <main id="page-content">
+            <p>
+                Do you love to cook with kale?
+            </p>
+            <p>
+                What is your favorite kale-based sandwich?
+            </p>
+            <p>
+                Having trouble? Kale 9-1-1!
+            </p>
+            <aside>
+                <p>
+                    Kale Tips 'n Tricks'
+                </p>
+            </aside>
+        </main>
+        <script>
+            const main_paragraphs = document.querySelectorAll('main > p')
+            console.log('The main element has ' + main_paragraphs.length + ' paragraphs that are direct children.');
+        </script>
+    </body>
+</html>

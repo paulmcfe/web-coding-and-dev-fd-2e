@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Specifying an element by id</title>
+    </head>
+    <body>
+        <header id="page-banner">
+            <h1>Above and Beyond the Kale of Duty</h1>
+        </header>
+        <main id="page-content">
+            <p>
+                Do you love to cook with kale?
+            </p>
+            <p>
+                What is your favorite kale-based sandwich?
+            </p>
+            <p>
+                Having trouble? Kale 9-1-1!
+            </p>
+        </main>
+        <script>
+            const paragraphs = document.getElementsByTagName("p")
+            console.log('There are ' + paragraphs.length + ' paragraphs in this page, okay?');
+        </script>
+    </body>
+</html>

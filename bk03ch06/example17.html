@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>So Many Kale Recipes</title>
+    </head>
+    <body>
+        <header id="page-banner">
+            <h1>Above and Beyond the Kale of Duty</h1>
+        </header>
+        <main id="page-content">
+            <p>
+                Do you love to cook with <a href="kale.html">kale</a>?
+            </p>
+        </main>
+        <script>
+            const newArticle = document.createElement("article");
+            document.querySelector("main").append(newArticle);
+            newArticle.innerHTML = "<h2>Article</h2>";
+
+            const newNav = document.createElement("nav");
+            document.querySelector("main").prepend(newNav);
+            newNav.innerHTML = "<h2>Navigation</h2>";
+        </script>
+    </body>
+</html>
