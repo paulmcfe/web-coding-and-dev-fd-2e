@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Running code after the page is  loaded</title>
+        <style>
+            body {
+                margin: 1rem;
+                font-size: 2rem;
+            }
+        </style>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                
+                //Display a message in the console
+                console.log('Yep, the DOM is now loaded!');
+                
+                // Access an element
+                const output = document.getElementById('output');
+                output.innerHTML = `Look, ma, I can access the DOM from the 
+                                   <code>head</code> element. <em>Awesome</em>!!!`;
+            });
+        </script>
+    </head>
+    <body>
+        <div id="output">
+        </div>
+    </body>
+</html>

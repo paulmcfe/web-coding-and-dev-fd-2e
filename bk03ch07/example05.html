@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>The dblclick event</title>
+        <style>
+            body {
+                margin: 1rem;
+                font-size: 2rem;
+            }
+            .thumbnail {
+                width: 100px;
+                height: auto;
+            }
+            .full-size {
+                width: 100%;
+            }
+        </style>
+        <script>
+        </script>
+    </head>
+    <body>
+        <p>Double-click an image to expand/shrink it</p>
+        <div>
+            <img src="image01.jpg" class="thumbnail" alt="Photo of a sign that reads 'No fish guts'">
+        </div>
+        <div>
+            <img src="image02.jpg" class="thumbnail" alt="Photo of a bridge with a sign that reads 'This river I step in is not the river I stand in'">
+        </div>
+        <div>
+            <img src="image03.jpg" class="thumbnail" alt="Photo of a person sitting on a park bench. The person's hair is sticking straight up and they are reading a book titled 'Struck By Lightning'">
+        </div>
+        
+        <script>
+            // Get all the img elements
+            const images = document.getElementsByTagName('img');
+            
+            // Loop through the images
+            for (const image of images) {
+            
+                // Listen for the dblclick event on each image
+                image.addEventListener('dblclick', function(e) {
+            
+                    // Prevent the default action
+                    e.preventDefault();
+            
+                    // Toggle the full-size class on the image
+                    image.classList.toggle('full-size');
+                });
+            }
+        </script>
+    </body>
+</html>
