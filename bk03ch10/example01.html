@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Declaring and using JSON variables</title>
+        <style>
+            body {
+                margin: 1em;
+                font-size: 1.5em;
+            }
+            div {
+                margin-top: .5em;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="output">
+        </div>
+
+        <script>
+            
+            // Declare a JavaScript object
+            const customer = {
+                "account": 853,
+                "name": "Alfreds Futterkiste",
+                "supplier": false,
+                "recentOrders": [28394,29539,30014],
+                "contact": {
+                    "name": "Maria Anders",
+                    "phone": "030-0074321",
+                    "email": "anders@futterkiste.com"
+                }
+            }
+
+            // Display the results
+            const outputString = 
+                `Customer’s account number: ${customer.account}<br>
+                Customer’s account name: ${customer.name}<br>
+                Customer’s 2nd order number: ${customer.recentOrders[1]}<br>
+                Customer’s account email: ${customer.contact.email}`;
+
+            document.querySelector('#output').innerHTML = outputString;
+        </script>
+    </body>
+</html>
