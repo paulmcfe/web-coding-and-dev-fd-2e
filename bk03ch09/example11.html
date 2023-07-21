@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Extracting the day name from a date</title>
+        <style>
+            body {
+                margin: 1em;
+                font-size: 1.5em;
+            }
+            div {
+                margin-top: .5em;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="output">
+        </div>
+
+        <script>
+            const dateNow = new Date();
+            document.getElementById("output").innerHTML = 
+                `The date is ${dateNow}<br>
+                The day name is ${dateNow.toLocaleDateString('default', { weekday: 'long' })}`;
+        </script>
+    </body>
+</html>

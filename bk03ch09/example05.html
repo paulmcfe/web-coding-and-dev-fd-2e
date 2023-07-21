@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>The slice() method</title>
+        <style>
+            body {
+                margin: 1em;
+                font-size: 1.5em;
+            }
+            div {
+                margin-top: .5em;
+            }
+        </style>
+    </head>
+    <body>
+        <pre>
+Web Coding and Development For Dummies
+01234567890123456789012345678901234567
+        </pre>
+        <div id="output">
+        </div>
+
+        <script>
+            const bookName = "Web Coding and Development For Dummies";
+            
+            let str = `
+                slice(0, 3) = ${bookName.slice(0, 3)}<br>
+                slice(4, 10) = ${bookName.slice(4, 10)}<br>
+                slice(15) = ${bookName.slice(15)}<br>
+                slice(0, -12) = ${bookName.slice(0, -12)}
+            `;
+            
+            document.getElementById("output").innerHTML = str;
+        </script>
+    </body>
+</html>

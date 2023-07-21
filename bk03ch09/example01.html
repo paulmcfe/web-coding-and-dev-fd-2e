@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>The startsWith(), includes(), and endsWith() methods</title>
+        <style>
+            body {
+                margin: 1em;
+                font-size: 1.5em;
+            }
+            div {
+                margin-top: .5em;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="output">
+        </div>
+
+        <script>
+            const bookName = "Web Coding and Development for Dummies";
+            console.log(bookName.startsWith("Web")); // Returns true
+            console.log(bookName.startsWith("Coding", 4)); // Returns true
+            console.log(bookName.includes("Development")); // Returns true
+            console.log(bookName.includes("And")); // Returns false
+            console.log(bookName.endsWith("Dummies")); // Returns true
+            console.log(bookName.endsWith("Coding", 10)); // Returns true
+        </script>
+    </body>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Simple email validation with includes()</title>
+        <style>
+            body {
+                margin: 1em;
+                font-size: 1.5em;
+            }
+            div {
+                margin-top: .5em;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            let emailAddress = "";
+            do {
+                emailAddress = prompt("Enter a valid email address:");
+            } 
+            while (!emailAddress.includes("@"));
+        </script>
+    </body>
+</html>

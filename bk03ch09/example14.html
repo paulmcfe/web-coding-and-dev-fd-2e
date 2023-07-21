@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Determining a person’s age</title>
+        <style>
+            body {
+                margin: 1em;
+                font-size: 1.5em;
+            }
+            div {
+                margin-top: .5em;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <label for="date-picker1">Select the first date:</label>
+            <input type="date" id="date-picker1" value="2000-01-01">
+        </div>
+        <div>
+            <label for="date-picker2">Select the first date:</label>
+            <input type="date" id="date-picker2" value="2001-01-01">
+        </div>
+        <div id="output">
+        </div>
+
+        <script>
+            // Add a `change` event listener to each date picker
+            const datePicker1 = document.querySelector('#date-picker1');
+            datePicker1.addEventListener('change', handler);
+            const datePicker2 = document.querySelector('#date-picker2');
+            datePicker2.addEventListener('change', handler);
+            
+            // Run this function when the date changes
+            function handler() {
+                
+                // Get the dates from the date pickers
+                const date1 = new Date(datePicker1.value);
+                const date2 = new Date(datePicker2.value);
+                
+                // Calculate the number of days between the dates
+                const daysDiff = daysBetween(date1, date2);
+                
+                // Output the result
+                document.getElementById("output").innerHTML = `Difference: ${daysDiff} ${ daysDiff === 1 ? ' day' : ' days'} between the two dates.`;
+
+            }
+            function daysBetween(date1, date2) {
+            
+                // Convert both dates to milliseconds
+                const date1Ms = date1.getTime();
+                const date2Ms = date2.getTime();
+            
+                // Calculate the difference in milliseconds
+                const differenceMs = Math.abs(date1Ms - date2Ms);
+            
+                // The number of milliseconds in one day
+                const ONEDAY = 1000 * 60 * 60 * 24;
+            
+                // Convert to days and return
+                return Math.round(differenceMs/ONEDAY);
+            }
+            handler();
+        </script>
+    </body>
+</html>
