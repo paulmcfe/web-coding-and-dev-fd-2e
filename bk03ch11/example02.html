@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Concatenating an array with the spread operator</title>
+        <style>
+            body {
+                margin: 1em;
+                font-size: 1.5em;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            // Declare the arrays
+            const electronics = ["Silent alarm clock", "Electric dog polisher", "Instant slow cooker"];
+            const recreation = ["Inflatable dartboard", "One ounce dumbbell", "Stringless tennis racket"];
+            const home = ["Banana peel welcome mat", "Sandpaper bathroom tissue", "Flame-retardant firewood"];
+            
+            // Combine them with the spread operator
+            const featuredProducts = [...electronics, ...home];
+            
+            // Display the concatenated array
+            console.log(featuredProducts);
+        </script>
+    </body>
+</html>

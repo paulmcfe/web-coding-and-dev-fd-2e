@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Copying an array with the spread operator</title>
+        <style>
+            body {
+                margin: 1em;
+                font-size: 1.5em;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            // Define the original array
+            const thisArray = ["alpha", "beta", "gamma"];
+            
+            // Make a copy using the spread operator
+            const thatArray = [...thisArray];
+            
+            // Confirm the copy
+            console.log(thatArray);
+            
+            // Change something in the original array
+            thisArray[0] = "aleph";
+            
+            // Confirm that the copy is unchanged
+            console.log(thatArray);
+        </script>
+    </body>
+</html>

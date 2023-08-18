@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Exporting and Importing Code</title>
+        <style>
+            body {
+                margin: 1em;
+                font-size: 1.5em;
+            }
+        </style>
+        <script type="module">
+            
+            // Import the named exports from example10.js
+            import { yourVariable as myVariable, PI, areaOfCircle } from "./example10.js";
+            
+            // Give them a whirl
+            console.log(`The area of a circle with radius ${myVariable} is ${areaOfCircle(myVariable)}`);
+            
+            // Import the default export from example10.js
+            import dayOfTheWeek  from "./example10.js";
+            
+            // Display it
+            console.log(`The current day of the week is ${dayOfTheWeek}`);            
+            
+        </script>
+    </head>
+    <body>
+    </body>
+</html>

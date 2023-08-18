@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Merging objects with the spread operator</title>
+        <style>
+            body {
+                margin: 1em;
+                font-size: 1.5em;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            // Define the user's contact data
+            const userContact = {
+                firstName: "Alan",
+                lastName: "Milne",
+                email: "aa@poohbear.com"
+            };
+            
+            // Define the user's shipping data
+            const userShipping = {
+                street: "321 Main Street",
+                city: "Toad Suck",
+                state: "AR",
+                zip: "12345"
+            };
+            
+            // Merge the objects using the spread operator
+            const userInfo = {
+                ...userContact,
+                ...userShipping
+            };
+            
+            // Display the merged object
+            console.log(userInfo);
+        </script>
+    </body>
+</html>

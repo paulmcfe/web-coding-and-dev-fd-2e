@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using the rest parameter</title>
+        <style>
+            body {
+                margin: 1em;
+                font-size: 1.5em;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            // createElement(): creates a new DOM element
+            //     tagName: The HTML name of the element
+            //     classNames: The names of the classes to add to the element's tag
+            function createElement(tagName, ...classNames) {
+                
+                // Create the element
+                const element = document.createElement(tagName);
+                
+                // Loop through the classNames array to add the classes
+                for (const className of classNames) {
+                    element.classList.add(className);
+                }
+                
+                // Return the new element
+                return element;
+            }
+            
+            // Call the createElement() function
+            const div = createElement('div', 'container', 'grid', 'dark-mode');
+            
+            // Display the element's HTML
+            console.log(div.outerHTML);
+        </script>
+    </body>
+</html>

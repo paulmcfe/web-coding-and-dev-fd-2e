@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Inserting one array literal into another using the spread operator</title>
+        <style>
+            body {
+                margin: 1em;
+                font-size: 1.5em;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            // Declare the initial array literals
+            const myArray1 = ["lions", "oh my!"];
+            const myArray2 = ["tigers", "bears"];
+            
+            
+            // Ignore the mind-bending regular JavaScript method
+            //myArray1.splice.apply(myArray1, [1, 0].concat(myArray2)); 
+            
+            // Instead, use the spread operator (...) to insert the second array into the first after the first item
+            myArray1.splice(1, 0, ...myArray2);
+            
+            // Display the result
+            console.log(myArray1);
+
+        </script>
+    </body>
+</html>

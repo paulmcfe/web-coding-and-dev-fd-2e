@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Passing an array’s items as function arguments using the spread operator</title>
+        <style>
+            body {
+                margin: 1em;
+                font-size: 1.5em;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            function volumeOfPrism(length, width, height) {
+                return length * width * height;
+            }
+            
+            // Declare the array of prism measurements
+            const myPrism = [5, 8, 10];
+            
+            // Use the spread operator to send the array's individual items to the function
+            const myPrismVolume = volumeOfPrism(...myPrism);
+
+            // Display the result
+            console.log(myPrismVolume);
+
+        </script>
+    </body>
+</html>

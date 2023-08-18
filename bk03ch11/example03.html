@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Inserting items into an array literal with the spread operator</title>
+        <style>
+            body {
+                margin: 1em;
+                font-size: 1.5em;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+            // Declare the initial array literal
+            const myArray = ["tigers", "bears"];
+            
+            // Use the spread operator (...) to insert the array literal into a new array
+            const myFullArray = ["lions", ...myArray, "oh my!"];
+            
+            // Display the result
+            console.log(myFullArray);
+
+        </script>
+    </body>
+</html>
