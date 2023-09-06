@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Styling invalid fields</title>
+        <style>
+            * {
+                margin: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-size: 1.25rem;
+                max-width: 25rem;
+                margin: 2rem;
+            }
+            div {
+                margin: .75rem 0 0 1rem;
+            }
+            label {
+                display: block;
+            }
+            input {
+                font-size: 1.25rem;
+            }
+            input+span {
+                margin-left: .25rem;
+            }
+            input:invalid+span::after {
+                content:'(required)';
+                color: red;
+            }
+            input:valid+span::after {
+                content:'\2713';
+                color: green;
+            }
+            button {
+                border-radius: 5px;
+                font-size: 1.25rem;
+                margin: .75rem 0 0 1rem;
+                padding: .25rem;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <div>
+                <label for="user-name">Name:</label>
+                <input id="user-name" 
+                       type="text" 
+                       placeholder="Your name here"
+                       required>
+                <span></span>
+            </div>
+        
+            <div>
+                <label for="user-email">Email:</label>
+                <input id="user-email" 
+                       type="email" 
+                       placeholder="e.g., you@domain.com"
+                       required>
+                <span></span>
+            </div>
+        
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>

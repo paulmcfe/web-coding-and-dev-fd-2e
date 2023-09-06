@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Restricting the length of a text field</title>
+        <style>
+            * {
+                margin: 0;
+                box-sizing: border-box;
+            }
+            body {
+                max-width: 25rem;
+                margin: 2rem;
+            }
+            div {
+                margin: .5rem 0 0 1rem;
+            }
+            label {
+                display: block;
+            }
+            button {
+                padding: .25rem;
+                border-radius: 5px;
+                font-size: .8rem;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <div>
+                <label for="acct-handle">Account handle:</label>
+                <input id="acct-handle" 
+                       type="text" 
+                       placeholder="Enter 6-12 characters" 
+                       minlength="6" 
+                       maxlength="12">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </body>
+</html>

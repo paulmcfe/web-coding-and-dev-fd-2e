@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Validating text data</title>
+        <style>
+            * {
+                margin: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-size: 1.25rem;
+                max-width: 40rem;
+                margin: 2rem;
+            }
+            div {
+                margin: .75rem 0 0 1rem;
+            }
+            label {
+                display: block;
+            }
+            input {
+                font-size: 1.25rem;
+            }
+            button {
+                font-size: 1.25rem;
+                padding: .4rem;
+                border-radius: 10px;
+                margin: .75rem 0 0 1rem;
+                background: forestgreen;
+                color: white;
+            }
+            .output {
+                display: none;
+                margin: 1rem 0 0 1rem;
+                padding: 1rem;
+                background-color: rgba(255, 0, 0, .25);
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <div>
+                <label for="user-name">User Name</label>
+                <input id="user-name" 
+                       type="text"
+                       name="user-name">
+            </div>
+            <button type="submit" onclick="submitForm()">Submit</button>
+        </form>
+        <article class="output"></article>
+            
+        <script>
+            // Submit the form
+            async function submitForm() {
+                
+                event.preventDefault();
+                
+                // Get a reference to the form
+                const form = document.querySelector('form');
+                
+                // Gather the form data
+                const formData = new FormData(form);
+                
+                // Create the query string to add to the fetch() URL
+                const queryParams = new URLSearchParams(formData).toString();
+                
+                try {
+                    // Submit the data as a GET request using query parameters
+                    const response = await fetch(`http://localhost/php/validate-text-fields.php?${queryParams}`);
+            
+                    // Check that we got a good response
+                    if (response.ok) {
+            
+                        // Parse the data asynchronously
+                        const data = await response.json();
+            
+                        // Get a reference to the output element, then display it
+                        const output = document.querySelector('.output');
+                        output.style.display = 'block';
+                        
+                        // Check the validation status
+                        if(data.status === 'success') {
+                            // Output the success result
+                            output.innerHTML = data.message;
+                        } else {
+                            // Output the validation error(s)
+                            let outputString = '<section>Whoops! There were errors:</section>';
+                            for (const key in data) {
+                                if (data.hasOwnProperty(key)) {
+                                    if (key != 'status') {
+                                        // Get the label text
+                                        const label = document.querySelector(`label[for=${key}]`).innerText;
+                                        outputString += `<section>Error in ${label} field: ${data[key]}</section>`;
+                                    }
+                                }
+                            }
+                            // Output the error result
+                            output.innerHTML = outputString;
+                        }                        
+                    } else {
+                        console.error('Server returned an error:', response.status, response.statusText);
+                    }
+                } catch (error) {
+                    console.error('Fetch operation failed:', error);
+                }
+            }
+        </script>
+    </body>
+</html>

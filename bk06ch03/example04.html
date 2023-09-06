@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Validating Form Data in the Browser</title>
+        <style>
+            * {
+                margin: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-size: 1.25rem;
+                max-width: 25rem;
+                margin: 1rem;
+            }
+            div {
+                margin: .5rem 0 0 1rem;
+            }
+            label {
+                display: block;
+            }
+            input {
+                font-size: 1.25rem;
+            }
+            button {
+                border-radius: 5px;
+                font-size: 1.25rem;
+                padding: .25rem;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <div>
+                <label for="user-email">Email:</label>
+                <input id="user-email" 
+                       type="email" 
+                       placeholder="e.g., you@domain.com">
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </body>
+</html>

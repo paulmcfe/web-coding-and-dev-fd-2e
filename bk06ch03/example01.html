@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Making a form field mandatory</title>        
+        <style>
+            * {
+                margin: 0;
+                box-sizing: border-box;
+            }
+            body {
+                max-width: 25rem;
+                margin: 2rem;
+            }
+            div {
+                margin: .5rem 0 0 1rem;
+            }
+            label {
+                display: block;
+            }
+            button {
+                padding: .25rem;
+                border-radius: 5px;
+                font-size: .8rem;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <div>
+                <label for="fave-beatle">Favorite Beatle:</label>
+                <input id="fave-beatle" type="text" required>
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </body>
+</html>

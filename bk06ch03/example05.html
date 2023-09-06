@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Making field values conform to a pattern</title>
+        <style>
+            * {
+                margin: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-size: 1.25rem;
+                max-width: 25rem;
+                margin: 1rem;
+            }
+            div {
+                margin: .5rem 0 0 1rem;
+            }
+            label {
+                display: block;
+                margin-top: .5rem;
+            }
+            input {
+                font-size: 1.25rem;                
+            }
+            button {
+                font-size: 1.25rem;
+                padding: .25rem;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+                <div>
+                    <label for="user-email">Phone number:</label>
+                    <input id="user-phone" 
+                           type="tel"
+                           pattern="\d\d\d-\d\d\d-\d\d\d\d"
+                           placeholder="e.g., 123-456-7890"
+                           title="Enter a 10-digit number in the format 123-456-7890">
+                    <label for="user-mobile">Mobile number:</label>
+                    <input id="user-mobile" 
+                           type="tel"
+                           pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                           placeholder="e.g., 123-456-7890"
+                           title="Enter a 10-digit number in the format 123-456-7890">
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        <script>
+            
+        </script>
+    </body>
+</html>

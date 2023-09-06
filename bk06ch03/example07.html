@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Styling invalid fields with JavaScript</title>
+        <style>
+            * {
+                margin: 0;
+                box-sizing: border-box;
+            }
+            body {
+                font-size: 1.25rem;
+                max-width: 25rem;
+                margin: 2rem;
+            }
+            div {
+                margin: .75rem 0 0 1rem;
+            }
+            label {
+                display: block;
+            }
+            button {
+                border-radius: 5px;
+                font-size: 1.25rem;
+                margin: .75rem 0 0 1rem;
+                padding: .25rem;
+            }
+            .error {
+                border-color: rgba(255, 0, 0, .5);
+                box-shadow: 0 0 10px 2px rgba(255, 0, 0, .8);
+            }
+            input {
+                font-size: 1.25rem;
+            }
+            input:valid {
+                border-color: lightgrey;
+                box-shadow: none;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+                <div>
+                    <label for="user-name">Name:</label>
+                    <input id="user-name" 
+                           type="text"
+                           name="username"
+                           placeholder="Your name here"
+                           required>
+                </div>
+                <div>
+                    <label for="user-email">Email:</label>
+                    <input id="user-email" 
+                           type="email" 
+                           name="useremail"
+                           placeholder="e.g., you@domain.com"
+                           required>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        <script>
+            const inputs = document.querySelectorAll('input');
+            for (const input of inputs) {
+                input.addEventListener('invalid', () => {
+                    input.classList.add('error');
+                });
+            }
+        </script>
+    </body>
+</html>
