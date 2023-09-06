@@ -41,7 +41,7 @@
                 </div>
                 <div>
                     <label for="nick">Nickname:</label>
-                    <input id="nick" type="text" name="nick-name">
+                    <input id="nick" type="text" name="nickname">
                 </div>
                 <button type="submit" onclick="submitForm()">Submit</button>
             </form>
@@ -62,12 +62,12 @@
                 // Gather the form data
                 const formData = new FormData(form);
                 
-                // Create the query string to add the fetch() URL
+                // Create the query string to add to the fetch() URL
                 const queryParams = new URLSearchParams(formData).toString();
                 
                 try {
                     // Submit the data as a GET request using query parameters
-                    const response = await fetch(`https://paulmcfedries.com/php/echo-form-fields-get.php?${queryParams}`);
+                    const response = await fetch(`http://localhost/php/echo-form-fields-get.php?${queryParams}`);
             
                     // Check that we got a good response
                     if (response.ok) {
