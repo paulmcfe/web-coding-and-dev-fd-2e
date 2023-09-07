@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Loading an HTML file</title>
+    </head>
+    <body>
+        <div id="target">
+        </div>            
+            
+        <script>
+            
+            // Converts a string asynchronously to uppercase after two seconds
+            function asynchronousUpperCase(str) {
+                
+                // Return a new Promise object
+                return new Promise((resolve, reject) => {
+                    
+                    // Use setTimeout() to delay two seconds
+                    setTimeout(() => {
+                        
+                        // Check that a String object was passed
+                        if (typeof str === 'string') {
+                            
+                            // If so, resolve the promise and return the string as uppercase
+                            resolve(str.toUpperCase());
+                        } else {
+                            
+                            // If not, reject the promise and return an error message
+                            reject('Input is not a string');
+                        }
+                    }, 2000);
+                });
+            }
+            // Create the first promise
+            asynchronousUpperCase('hello')
+            
+                // Wait for the first promise to resolve
+                .then(result => {
+                    console.log("First result: ", result);  // Output: "First result: HELLO"
+                    
+                    // Chain a second promise that will be resolved
+                    return asynchronousUpperCase('world');  
+                })
+
+                // Wait for the second promise to resolve
+                .then(secondResult => {
+                    console.log("Second result: ", secondResult);  // Output: "Second result: WORLD"
+                    
+                    // Chain a third promise that will be rejected
+                    return asynchronousUpperCase(1);  
+                })
+                
+                // Wait for the third promise to resolve
+                .then(thirdResult => {
+                    console.log("Third result: ", thirdResult);  // Output: "An result: Input is not a string"
+                })
+                
+                // Wait for any promise to be rejected
+                .catch(error => {
+                    console.log("An error occurred: ", error);
+                });
+
+        </script>
+    </body>
+</html>

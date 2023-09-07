@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Chaining multiple asynchronous operations</title>
+    </head>
+    <body>
+        <div id="target">
+        </div>            
+            
+        <script>
+            
+            // Converts a string asynchronously to uppercase after two seconds
+            function asynchronousUpperCase(str) {
+                
+                // Return a new Promise object
+                return new Promise((resolve, reject) => {
+                    
+                    // Use setTimeout() to delay two seconds
+                    setTimeout(() => {
+                        
+                        // Check that a String object was passed
+                        if (typeof str === 'string') {
+                            
+                            // If so, resolve the promise and return the string as uppercase
+                            resolve(str.toUpperCase());
+                        } else {
+                            
+                            // If not, reject the promise and return an error message
+                            reject('Input is not a string');
+                        }
+                    }, 2000);
+                });
+            }
+  
+            async function handleAsynchronous() {
+                // Perform the first asynchronous operation and store the result
+                const firstResult = await asynchronousUpperCase('hello');
+                
+                // Display the first result
+                console.log(`First result: ${firstResult}`);
+            
+                // Perform the second asynchronous operation and store the result
+                const secondResult = await asynchronousUpperCase('world');
+            
+                // Display the second result
+                console.log(`Second result: ${secondResult}`);
+            }
+            
+            // Run it
+            handleAsynchronous();
+        </script>
+    </body>
+</html>

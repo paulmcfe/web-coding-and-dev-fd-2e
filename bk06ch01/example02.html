@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using await to wait for an ansynchronous operation to complete</title>
+    </head>
+    <body>
+        <div id="target">
+        </div>            
+            
+        <script>
+            
+            // Converts a string asynchronously to uppercase after two seconds
+            function asynchronousUpperCase(str) {
+                
+                // Return a new Promise object
+                return new Promise((resolve, reject) => {
+                    
+                    // Use setTimeout() to delay two seconds
+                    setTimeout(() => {
+                        
+                        // Check that a String object was passed
+                        if (typeof str === 'string') {
+                            
+                            // If so, resolve the promise and return the string as uppercase
+                            resolve(str.toUpperCase());
+                        } else {
+                            
+                            // If not, reject the promise and return an error message
+                            reject('Input is not a string');
+                        }
+                    }, 2000);
+                });
+            }
+                        
+            async function handleAsynchronous() {
+                // Perform the asynchronous operation and store the result
+                const result = await asynchronousUpperCase('hello world');
+            
+                // Display the result
+                console.log(`Result: ${result}`);
+            }
+                
+            // Run it
+            handleAsynchronous();
+        </script>
+    </body>
+</html>

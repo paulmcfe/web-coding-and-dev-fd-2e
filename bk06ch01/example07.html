@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Loading output from a PHP script</title>
+    </head>
+    <body>
+        <h2 id="target">            
+        </h2>
+    
+        <script>
+    
+            // Set up an asynchronous function
+            async function displayCurrentTime() {
+                
+                try {
+                    // Fetch the data asynchronously
+                    const response = await fetch('get-server-time.php');
+                    
+                    // Check that we got a good response
+                    if (response.ok) {
+                        
+                        // Parse the response as text
+                        const data = await response.text();
+                        
+                        // Get a reference to the target element
+                        const target = document.getElementById('target');
+                        
+                        // Write the data to the target
+                        target.innerHTML = data;
+                        
+                    } else {
+                        console.error('Server returned an error:', response.status, response.statusText);
+                    }
+                } catch (error) {
+                    console.error('Fetch operation failed:', error);
+                }
+            }
+            
+            // Run the async function
+            displayCurrentTime();
+        </script>
+    </body>
+</html>

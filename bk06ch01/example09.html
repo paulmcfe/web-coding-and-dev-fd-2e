@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Handling JSON data returned by the server</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }            
+            body {
+                width: 40rem;
+                margin: 1rem;
+            }
+            section {
+                border: 1px solid black;
+                padding: .5rem;
+                margin-top: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Supplier Contacts</h1>
+        <main></main>
+            
+        <script>
+            async function getSuppliers() {
+                
+                try {
+                    // Send the request
+                    const response = await fetch('example09.php');
+                    
+                    if (response.ok) {
+                        
+                        // Parse the JSON response
+                        const suppliers = await response.json();
+                    
+                        // Loop through the suppliers array
+                        for (let i = 0; i < suppliers.length; i += 1) {
+                            document.querySelector('main')
+                                    .insertAdjacentHTML('beforeend',`<section id="contact${i}"></section>`);
+                            document.querySelector(`#contact${i}`)
+                                    .insertAdjacentHTML('beforeend', `<div>Company: ${suppliers[i].company_name}</div>`);
+                            document.querySelector(`#contact${i}`)
+                                    .insertAdjacentHTML('beforeend',`<div>Contact: ${suppliers[i].contact_name}</div>`);
+                            document.querySelector(`#contact${i}`)
+                                    .insertAdjacentHTML('beforeend',`<div>Title: ${suppliers[i].contact_title}</div>`);
+                            document.querySelector(`#contact${i}`)
+                                    .insertAdjacentHTML('beforeend',`<div>Email: ${suppliers[i].contact_email}</div>`);
+                        }                        
+                    } else {
+                        console.error('Server returned an error:', response.status, response.statusText);
+                    }
+                } catch (error) {
+                    console.error('Fetch operation failed:', error);
+                }
+            }
+            
+            // Run the function
+            getSuppliers();
+        </script>
+    </body>
+</html>

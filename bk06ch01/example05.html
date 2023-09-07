@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Running a Script on the Server</title>
+        <script>            
+            // Set up an asynchronous function
+            async function runServerScript() {
+                
+                try {
+                    // Run the PHP script
+                    const response = await fetch('example05.php');
+                    
+                    // Check that we got a good response
+                    if (response.ok) {
+                        
+                        // Parse the response as text
+                        const data = await response.text();
+                
+                        // Write the response text to the Console
+                        console.log(data);
+                        
+                    } else {
+                        console.error('Server returned an error:', response.status, response.statusText);
+                    }
+                } catch (error) {
+                    console.error('Fetch operation failed:', error);
+                }
+            }
+            
+            // Run the async function
+            runServerScript();
+        </script>
+    </head>
+    <body>
+            
+    </body>
+</html>
