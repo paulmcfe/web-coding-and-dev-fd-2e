@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Planning Your Web App: Responsiveness: adaptive layout</title>
+        <link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            body {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: center;
+                min-height: 100vh;
+                font-family: Merriweather, Georgia, serif;
+                line-height: 1.5;
+            }
+            header {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 4.5rem;
+                width: 100%;
+                text-transform: uppercase;
+                background-color: antiquewhite;   
+            }
+            .site-title {
+                font-size: 2.5rem;
+            }
+            nav {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 3rem;
+                width: 100%;
+                font-family: "Merriweather Sans", Verdana, sans-serif;
+                text-transform: uppercase;
+                color: #eee;
+                background-color: #333;
+            }
+            ul {
+                display: flex;
+                justify-content: space-between;
+                width: 60%;
+                max-width: 40rem;
+                list-style-type: none;
+            }
+            main {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+                max-width: 60rem;
+            }
+            article {
+                flex: 2;
+                padding: 0 2%;
+                min-width: 35rem;
+                background-color: white;
+            }
+            article h1 {
+                margin-top: 1rem;
+                font-size: clamp(1.25rem, .75rem + 1vmax, 2rem);
+            }
+            h2 {
+                margin-bottom: 1rem;
+                color: #666;
+                font-size: 1.25rem;
+                font-style: italic;
+            }
+            h3 {
+                font-size: 1.25rem;
+                font-weight: bold;
+            }
+            article div {
+                margin-bottom: 1rem;
+                text-align: justify;
+            }
+            aside {
+                flex: 1;
+                padding: 2%;
+                min-width: 8rem;
+                font-family: "Merriweather Sans", Verdana, sans-serif;
+            }
+            aside div:first-of-type {
+                margin-top: 1rem;
+            }
+            aside div {
+                margin-bottom: 1rem;
+            }
+            .sidebar-left {
+                background-color: lightgray;
+            }
+            .sidebar-right {
+                background-color: antiquewhite;
+            }
+            .sidebar-left div {
+                padding-top: .25rem;
+                font-style: italic;
+            }
+            footer {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 3rem;
+                width: 100%;
+                font-family: "Merriweather Sans", Verdana, sans-serif;
+                background-color: #333;
+                color: #eee;
+            }
+            @media (max-width: 767px) {
+                header {
+                    height: 3rem;
+                }
+                .site-title {
+                    font-size: 1.5rem;
+                }
+                ul {
+                    justify-content: space-around;
+                    width: 100%;
+                }
+                nav li {
+                    font-size: .75rem;
+                }
+                article {
+                    width: 100%;
+                    min-width: 100%;
+                    order: -1;
+                }
+                article h1 {
+                    font-size: 2.5rem;
+                }
+                article h2 {
+                    font-size: 1.25rem;
+                }
+                footer {
+                    font-size: .75rem;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+                <h1 class="site-title">Historical Typography</h1>
+            </header>
+            <nav>
+                <ul>
+                    <li>Home</li>
+                    <li>Articles</li>
+                    <li>Blog</li>
+                    <li>Research</li>
+                    <li>About Us</li>
+                </ul>
+            </nav>    
+            <main>
+            <aside class="sidebar-left">
+            <strong>More Titles</strong>
+                <div>Art of the Printed Book</div>
+                <div>Books and Printing</div>
+                <div>The Crystal Goblet</div>
+                <div>An Essay on Typography</div>
+                <div>Fine Print on Type</div>
+                <div>Periods of Typography</div>
+                <div>Type and Typography</div>
+            </aside>
+                <article>
+                    <h1>
+                        The Art of the Book
+                    </h1>
+                    <h2>A Review of Some Recent European and American Work in Typography, Page Decoration & Binding
+                    </h2>
+                    <div>
+                    To judge rightly of the good or bad features of types used for printing books, we should have some acquaintance at least with the earlier forms from which our modern types have come. Let us therefore glance at the history of the letter from which English books are printed to-day.
+                    </div>
+                    <div>
+                    The earliest printed books, such as the Mainz Bible and Psalters, were printed in Gothic letter, which in its general character copied the book-hands used by the scribes in Germany, where these books were printed. In Italy, on the other hand, the Gothic hand did not satisfy the fastidious taste of the scholars of the Renaissance, who had adopted for their own a handwriting of which the majuscule letters were inspired, or at least influenced, by the letter used in classical Rome, of which so many admirable examples had survived in the old monumental inscriptions. For the small letters they went back to the fine hand which by the eleventh and twelfth centuries had gradually been formed out of the Caroline minuscules of the ninth and had become the standard book-hand of the greater part of Latin Europe.
+                    </div>
+                    <div>
+                        When the Germans Sweynheim and Pannartz brought printing into Italy, they first printed books in a very beautiful but somewhat heavy Roman letter of strong Gothic tendency. It seems, indeed, to have been somewhat too Gothic for the refined humanistic taste of that day; and when they moved their press to Rome, it was discarded in favour of a letter more like the fashionable <i>scrittura umanistica</i> of the Renaissance. Other Italian printers had founts both of Gothic and of Roman types. The great Venetian printer Jenson, for instance, and many of his fellows printed books in both characters; but the Roman gradually prevailed, first in Italy, then in Spain and France, and later on in England. In Germany, on the other hand, the cradleland of the craft, Gothic letter of a sadly debased type has held its own down to this day. Even in Germany, however, the use of Roman type has gained ground of late years, nationalist feeling notwithstanding.
+                    </div>
+                </article>
+                    <aside class="sidebar-right">
+                        <div>
+                            <strong>Title</strong><br>
+                            <i>The Art of the Book: A Review of Some Recent European and American Work in Typography, Page Decoration & Binding</i>
+                        </div>
+                        <div>
+                            <strong>Authors</strong><br>
+                            Bernard H. Newdigate, Douglas Cockerell, L. Deubner, & E. A. Taylor
+                        </div>
+                        <div>
+                            <strong>Editor</strong><br>
+                            Charles Holme
+                        </div>
+                        <div>
+                            <strong>Publisher</strong><br>
+                            “The Studio” Ltd., London
+                        </div>
+                        <div>
+                            <strong>Publication Date</strong><br>
+                            1914
+                        </div>
+                    </aside>
+            </main>
+            <footer>
+                &copy; Logophilia Limited &middot; Book text is in the public domain 
+            </footer>
+    </body>
+</html>
