@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Using prepared statements</title>
+        <style>
+            body {
+                box-sizing: border-box;
+                font-family: system-ui, sans-serif;
+                font-size: 1.25rem;
+                margin: 1rem;;
+            }
+            fieldset {
+                width: 30rem;
+            }
+            label, input {
+                display: block;
+            }
+            input {
+                font-size: inherit;
+            }
+            select,
+            button {
+                font-size: inherit;
+                margin-bottom: 1rem;         
+            }
+            #output {
+                display: flex;
+                flex-wrap: wrap;
+                gap: .5rem;
+            }
+            section {
+                border: 1px solid black;
+                padding: .5rem;
+            }
+        </style>
+    </head>
+    <body>        
+        <form>
+            <fieldset>
+                <legend>Customer Orders By Employee</legend>
+                <label for="customer">Customer:</label>
+                <select id="customer" name="customer">
+                    <option value="ALFKI">Alfreds Futterkiste</option>
+                    <option value="ANATR">Ana Trujillo Emparedados y helados</option>
+                    <option value="ANTON">Antonio Moreno Taqueria</option>
+                    <option value="AROUT">Around the Horn</option>
+                    <option value="BSBEV">B's Beverages</option>
+                    <option value="BERGS">Berglunds snabbkop</option>
+                    <option value="BLAUS">Blauer See Delikatessen</option>
+                    <option value="BLONP">Blondel pere et fils</option>
+                    <option value="BOLID">Bolido Comidas preparadas</option>
+                    <option value="BONAP">Bon app</option>
+                    <option value="BOTTM">Bottom-Dollar Markets</option>
+                    <option value="CACTU">Cactus Comidas para llevar</option>
+                    <option value="CENTC">Centro comercial Moctezuma</option>
+                    <option value="CHOPS">Chop-suey Chinese</option>
+                    <option value="COMMI">Comercio Mineiro</option>
+                    <option value="CONSH">Consolidated Holdings</option>
+                    <option value="WANDK">Die Wandernde Kuh</option>
+                    <option value="DRACD">Drachenblut Delikatessen</option>
+                    <option value="DUMON">Du monde entier</option>
+                    <option value="EASTC">Eastern Connection</option>
+                    <option value="ERNSH">Ernst Handel</option>
+                    <option value="FAMIA">Familia Arquibaldo</option>
+                    <option value="FISSA">FISSA Fabrica Inter. Salchichas S.A.</option>
+                    <option value="FOLIG">Folies gourmandes</option>
+                    <option value="FOLKO">Folk och fa HB</option>
+                    <option value="FRANR">France restauration</option>
+                    <option value="FRANS">Franchi S.p.A.</option>
+                    <option value="FRANK">Frankenversand</option>
+                    <option value="FURIB">Furia Bacalhau e Frutos do Mar</option>
+                    <option value="GALED">Galeria del gastronomo</option>
+                    <option value="GODOS">Godos Cocina Tipica</option>
+                    <option value="GOURL">Gourmet Lanchonetes</option>
+                    <option value="GREAL">Great Lakes Food Market</option>
+                    <option value="GROSR">GROSELLA-Restaurante</option>
+                    <option value="HANAR">Hanari Carnes</option>
+                    <option value="HILAA">HILARIoN-Abastos</option>
+                    <option value="HUNGC">Hungry Coyote Import Store</option>
+                    <option value="HUNGO">Hungry Owl All-Night Grocers</option>
+                    <option value="ISLAT">Island Trading</option>
+                    <option value="KOENE">Koniglich Essen</option>
+                    <option value="LACOR">La corne d'abondance</option>
+                    <option value="LAMAI">La maison d'Asie</option>
+                    <option value="LAUGB">Laughing Bacchus Wine Cellars</option>
+                    <option value="LAZYK">Lazy K Kountry Store</option>
+                    <option value="LEHMS">Lehmanns Marktstand</option>
+                    <option value="LETSS">Let's Stop N Shop</option>
+                    <option value="LILAS">LILA-Supermercado</option>
+                    <option value="LINOD">LINO-Delicateses</option>
+                    <option value="LONEP">Lonesome Pine Restaurant</option>
+                    <option value="MAGAA">Magazzini Alimentari Riuniti</option>
+                    <option value="MAISD">Maison Dewey</option>
+                    <option value="MEREP">Mere Paillarde</option>
+                    <option value="MORGK">Morgenstern Gesundkost</option>
+                    <option value="NORTS">North/South</option>
+                    <option value="OCEAN">Oceano Atlantico Ltda.</option>
+                    <option value="OLDWO">Old World Delicatessen</option>
+                    <option value="OTTIK">Ottilies Kaseladen</option>
+                    <option value="PARIS">Paris specialites</option>
+                    <option value="PERIC">Pericles Comidas clasicas</option>
+                    <option value="PICCO">Piccolo und mehr</option>
+                    <option value="PRINI">Princesa Isabel Vinhos</option>
+                    <option value="QUEDE">Que Delicia</option>
+                    <option value="QUEEN">Queen Cozinha</option>
+                    <option value="QUICK">QUICK-Stop</option>
+                    <option value="RANCH">Rancho grande</option>
+                    <option value="RATTC">Rattlesnake Canyon Grocery</option>
+                    <option value="REGGC">Reggiani Caseifici</option>
+                    <option value="RICAR">Ricardo Adocicados</option>
+                    <option value="RICSU">Richter Supermarkt</option>
+                    <option value="ROMEY">Romero y tomillo</option>
+                    <option value="SANTG">Sante Gourmet</option>
+                    <option value="SAVEA">Save-a-lot Markets</option>
+                    <option value="SEVES">Seven Seas Imports</option>
+                    <option value="SIMOB">Simons bistro</option>
+                    <option value="SPECD">Specialites du monde</option>
+                    <option value="SPLIR">Split Rail Beer & Ale</option>
+                    <option value="SUPRD">Supremes delices</option>
+                    <option value="THEBI">The Big Cheese</option>
+                    <option value="THECR">The Cracker Box</option>
+                    <option value="TOMSP">Toms Spezialitaten</option>
+                    <option value="TORTU">Tortuga Restaurante</option>
+                    <option value="TRADH">Tradicao Hipermercados</option>
+                    <option value="TRAIH">Trail's Head Gourmet Provisioners</option>
+                    <option value="VAFFE">Vaffeljernet</option>
+                    <option value="VICTE">Victuailles en stock</option>
+                    <option value="VINET">Vins et alcools Chevalier</option>
+                    <option value="WARTH">Wartian Herkku</option>
+                    <option value="WELLI">Wellington Importadora</option>
+                    <option value="WHITC">White Clover Markets</option>
+                    <option value="WILMK">Wilman Kala</option>
+                    <option value="WOLZA">Wolski  Zajazd</option>
+                </select>
+                <label for="employee">Employee:</label>
+                <select id="employee" name="employee">
+                    <option value="5">Steven Buchanan</option>	
+                    <option value="8">Laura Callahan</option>
+                    <option value="1">Nancy Davolio</option>
+                    <option value="9">Anne Dodsworth</option>
+                    <option value="2">Andrew Fuller</option>
+                    <option value="7">Robert King</option>
+                    <option value="3">Janet Leverling</option>
+                    <option value="4">Margaret Peacock</option>
+                    <option value="6">Michael Suyama</option>
+                </select><br>
+                <button>Submit</button>
+            </fieldset>
+        </form>
+        <p>
+        <label for="output">Orders:</label>
+        <div id="output">
+        </div>
+        
+        <script>            
+            // Get a reference to the form
+            const form = document.querySelector('form');
+            
+            // Listen for the submit event
+            form.addEventListener('submit', async (event) => {
+                
+                // Prevent the default form submission
+                event.preventDefault();
+                
+                try {
+                    // Get the form data
+                    const formData = new FormData(form);
+                    
+                    // Ship it via fetch() POST
+                    const response = await fetch('http://localhost/webcoding/bk08ch04/example04.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    // Check the response
+                    if (response.ok) {
+                        // Get the data
+                        const data = await response.json();
+                      
+                        // Get a reference to the output element and then clear it
+                        const output = document.querySelector('#output');
+                        output.innerHTML = '';
+                        
+                        // Check for no data returned
+                        if (data.length === 0) {
+                            output.innerText = "No orders returned. Please try agin with a different customer and/or employee."
+                        }
+                        
+                        // Iterate the returned array of orders
+                        data.forEach((orderData, index) => {
+                            
+                            // Insert a section element to hold the order data
+                            output.insertAdjacentHTML('beforeend', `<section id="order-${index}">`);
+                            
+                            // Get a reference to the new section element
+                            let order = document.querySelector(`#order-${index}`);
+                            
+                            // Iterate the object contained in the current array item (orderData)
+                            for (let key in orderData) {
+                                // Insert a div element to hold the order data
+                                order.insertAdjacentHTML('beforeend', '<div>');
+                                order.insertAdjacentText('beforeend', `${key}: ${orderData[key]}`);
+                                order.insertAdjacentHTML('beforeend', '<\div>');
+                            }
+                            output.insertAdjacentHTML('beforeend', '</section>');
+                        });
+                    } else {
+                        console.error('Server returned an error:', response.status, response.statusText);
+                    }
+                } catch (error) {
+                    console.error('Fetch operation failed:', error);
+                }
+            });            
+        </script>
+    </body>
+</html>

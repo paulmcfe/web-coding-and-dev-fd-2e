@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Securing Passwords</title>
+        <style>
+            body {
+                box-sizing: border-box;
+                font-family: system-ui, sans-serif;
+                font-size: 1.25rem;
+                margin: 1rem;;
+            }
+            fieldset {
+                width: 30rem;
+            }
+            label, input {
+                display: block;
+            }
+            input {
+                font-size: inherit;
+            }
+            #email,
+            #password {
+                width: 100%;
+            }
+            button {
+                font-size: inherit;
+                margin-bottom: 1rem;         
+            }
+            div {
+                margin: .5rem;
+                width: fit-content;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>Create Account:</legend>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" value="user@example.com"><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password"><br>
+                <button>Create Account</button>
+            </fieldset>
+        </form>
+        <p>
+        <label for="output">Output:</label>
+        <div id="output">
+        </div>
+        
+        <script>            
+            // Get a reference to the form
+            const form = document.querySelector('form');
+            
+            // Listen for the submit event
+            form.addEventListener('submit', async (event) => {
+                
+                // Prevent the default form submission
+                event.preventDefault();
+                
+                try {
+                    // Get the form data
+                    const formData = new FormData(form);
+                    
+                    // Ship it via fetch() POST
+                    const response = await fetch('http://localhost/webcoding/bk08ch04/example05.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    // Check the response
+                    if (response.ok) {
+                        // Get the data
+                        const data = await response.text();
+                        
+                        // Output the data
+                        const output = document.querySelector('#output');
+                        output.innerHTML = data;
+                    } else {
+                        console.error('Server returned an error:', response.status, response.statusText);
+                    }
+                } catch (error) {
+                    console.error('Fetch operation failed:', error);
+                }
+            });            
+        </script>
+    </body>
+</html>

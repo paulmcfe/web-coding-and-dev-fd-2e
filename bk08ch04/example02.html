@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Filtering incoming data</title>
+        <style>
+            body {
+                box-sizing: border-box;
+                font-family: system-ui, sans-serif;
+                font-size: 1.25rem;
+                margin: 1rem;;
+            }
+            fieldset {
+                width: 30rem;
+            }
+            label, input {
+                display: block;
+            }
+            input {
+                font-size: inherit;
+            }
+            #name,
+            #email {
+                width: 100%;
+            }
+            #age,
+            #score {
+                width: 25%;
+            }
+            button {
+                font-size: inherit;
+                margin-bottom: 1rem;         
+            }
+            div {
+                margin: .5rem;
+                width: fit-content;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <fieldset>
+                <legend>Submit your score:</legend>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" value="<script>alert('Here comes trouble!')</script>"><br>
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" value="<script>alert('Uh oh!')</script>"><br>
+                <label for="age">Age:</label>
+                <input type="text" id="age" name="age" value="#42#"><br>
+                <label for="score">Score:</label>
+                <input type="text" id="score" name="score" value="1,024.5"><br>
+                <button>Submit</button>
+            </fieldset>
+        </form>
+        <p>
+        <label for="output">Output:</label>
+        <div id="output">
+        </div>
+        
+        <script>            
+            // Get a reference to the form
+            const form = document.querySelector('form');
+            
+            // Listen for the submit event
+            form.addEventListener('submit', async (event) => {
+                
+                // Prevent the default form submission
+                event.preventDefault();
+                
+                try {
+                    // Get the form data
+                    const formData = new FormData(form);
+                    
+                    // Ship it via fetch() POST
+                    const response = await fetch('http://localhost/webcoding/bk08ch04/example02.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    // Check the response
+                    if (response.ok) {
+                        // Get the filtered data
+                        const data = await response.json();
+                        
+                        // Output the data
+                        const output = document.querySelector('#output');
+                        for (let key in data) {
+                            output.insertAdjacentHTML('beforeend', '<div>');
+                            output.insertAdjacentText('beforeend', `${key}: ${data[key]}`);
+                            output.insertAdjacentHTML('beforeend', '<\div>');
+                        }
+                    } else {
+                        console.error('Server returned an error:', response.status, response.statusText);
+                    }
+                } catch (error) {
+                    console.error('Fetch operation failed:', error);
+                }
+            });            
+        </script>
+    </body>
+</html>

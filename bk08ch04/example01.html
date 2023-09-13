@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Converting incoming data</title>
+        <style>
+            body {
+                box-sizing: border-box;
+                font-family: system-ui, sans-serif;
+                font-size: 1.25rem;
+                margin: 1rem;;
+            }
+            textarea {
+                font-size: inherit;
+                padding: .5rem;
+                height: 5rem;
+                margin: .25rem 0 .5rem 0;
+                width: 25rem;
+            }
+            button {
+                font-size: inherit;
+                margin-bottom: 1rem;         
+            }
+            div {
+                margin: .5rem;
+                width: fit-content;
+            }
+        </style>
+    </head>
+    <body>
+        <form>
+            <label for="message">Send me a message:</label><br>
+            <textarea id="message" name="message">
+<script>
+    alert("Take that!")
+</script>
+            </textarea><br>
+            <button>Submit</button>
+        </form>
+        
+        <label for="output">Output:</label><br>
+        <div id="output">
+        </div>
+        
+        <script>            
+            // Get a reference to the form
+            const form = document.querySelector('form');
+            
+            // Listen for the submit event
+            form.addEventListener('submit', async (event) => {
+                
+                // Prevent the default form submission
+                event.preventDefault();
+                
+                try {
+                    // Get the form data
+                    const formData = new FormData(form);
+                    
+                    // Ship it via fetch() POST
+                    const response = await fetch('http://localhost/webcoding/bk08ch04/example01.php', {
+                        method: 'POST',
+                        body: formData
+                    });
+                    
+                    // Check the response
+                    if (response.ok) {
+                        // Get the sanitized string
+                        const data = await response.text();
+                        
+                        // Output the (no longer dangerous) string
+                        document.querySelector('#output').innerText = data;
+                    } else {
+                        console.error('Server returned an error:', response.status, response.statusText);
+                    }
+                } catch (error) {
+                    console.error('Fetch operation failed:', error);
+                }
+            });            
+        </script>
+    </body>
+</html>
