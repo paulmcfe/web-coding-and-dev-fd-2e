@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Math Functions</title>
+        <style>
+            body {
+                margin: 1em;
+                font-size: 1.5em;
+            }
+            input {
+                font-size: 1.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        Enter a radius: 
+        <input id="radius" type="text" size="4">
+        <p id="output">
+        </p>
+        <script>
+            // Get a reference to the radius text box
+            const radiusText = document.getElementById('radius');
+            
+            // Listen for changes to the radius text box
+            radiusText.addEventListener('change', function() {
+                
+                // Get the radius
+                r = +this.value;
+                
+                // Make sure it's positive
+                if (r > 0) {
+                    
+                    // Calculate the area
+                    let area = areaOfCircle(r);
+                    
+                    // Output the result
+                    document.getElementById('output').innerText = `The area of a circle with radius ${r} is ${area}`;            
+                }
+            });
+            
+            // This function uses Math.PI and Math.pow() to 
+            // calculate the area of a circle with a given radius
+            function areaOfCircle(radius) {
+                return Math.PI * Math.pow(radius, 2);
+            }
+
+    </script>
+    </body>
+</html>
