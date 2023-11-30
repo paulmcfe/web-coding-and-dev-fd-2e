@@ -53,13 +53,13 @@
                        type="email" 
                        name="user-email">
             </div>
-            <button type="submit" onclick="submitForm()">Submit</button>
+            <button type="submit" onclick="submitForm(event)">Submit</button>
         </form>
         <article class="output"></article>
         
         <script>
             // Submit the form
-            async function submitForm() {
+            async function submitForm(event) {
                 
                 event.preventDefault();
                 

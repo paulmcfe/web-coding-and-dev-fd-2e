@@ -43,7 +43,7 @@
                     <label for="nick">Nickname:</label>
                     <input id="nick" type="text" name="nickname">
                 </div>
-                <button type="submit" onclick="submitForm()">Submit</button>
+                <button type="submit" onclick="submitForm(event)">Submit</button>
             </form>
             
             <div class="output">
@@ -52,7 +52,7 @@
             
         <script>
             // Submit the form
-            async function submitForm() {
+            async function submitForm(event) {
                 
                 event.preventDefault();
                 
