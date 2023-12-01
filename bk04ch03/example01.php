@@ -10,14 +10,14 @@
         $chapter_num = $_GET['chapter'];
     } else {
         echo 'The "chapter" parameter is missing!<br>';
-        echo 'Sorry it didn\'t work out. ';
+        echo 'Sorry it didn\'t work out.';
         exit(0);
     }
     if (isset($_GET['example'])) {
         $example_num = $_GET['example'];
     } else {
         echo 'The "example" parameter is missing!<br>';
-        echo 'You had <em>one</em> job! ';
+        echo 'You had <em>one</em> job!';
         exit(0);
     }
     echo 'Got the query string!<br>

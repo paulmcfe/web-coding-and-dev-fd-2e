@@ -73,7 +73,7 @@
                         
                         // Output the data
                         const output = document.querySelector('#output');
-                        output.innerHTML = data;
+                        output.textContent = data;
                     } else {
                         console.error('Server returned an error:', response.status, response.statusText);
                     }
